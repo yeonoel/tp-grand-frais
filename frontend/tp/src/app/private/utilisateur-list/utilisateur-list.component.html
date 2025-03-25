@@ -1,0 +1,79 @@
+
+<p></p>
+
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="right">
+      <div class="button-container">
+        <p-button
+          label="Ajouter une personne"
+          icon="pi pi-plus"
+          class="mr-2 btn-sucess"
+          (onClick)="ouvrireModal()" />
+      </div>
+    </ng-template>
+  </p-toolbar>
+  <p-table
+    [value]="utilisateurList"
+    [scrollable]="true"
+    scrollHeight="400px"
+    [paginator]="true"
+    [rows]="5"
+    [tableStyle]="{'min-width': '50rem'}"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="nom">Nom <p-sortIcon field="nom"></p-sortIcon></th>
+        <th>Prénom</th>
+        <th>Age
+          <p-dropdown
+            [options]="filtrerAgeOptions"
+            placeholder="Filtrer par âge"
+            (onChange)="filtrerParAge($event)"
+            optionLabel="label"
+            dataKey="value"
+          />
+        </th>
+        <th>Départements</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-utilisateur>
+      <tr>
+        <td>{{ utilisateur?.nom }}</td>
+        <td>{{ utilisateur?.prenom }}</td>
+        <td>{{ utilisateur?.age }}</td>
+        <td>{{ utilisateur?.departement }}</td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            class="mr-2"
+            [text]="true"
+            severity="success"
+            (onClick)="editerUtilisateur(utilisateur)"
+          >
+          </p-button>
+          <p-button
+            icon="pi pi-trash"
+            [text]="true"
+            severity="danger"
+            (onClick)="supprimerUtilisateur(utilisateur)"
+          >
+          </p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-modal-utilisateur-form
+    [visible]="ouvrireDialogue"
+    [personne]="personne"
+    (onClose)="fermerModal()"
+    (onSave)="sauvegarderPersonne($event)">
+  </app-modal-utilisateur-form>
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>
+
+
+
+

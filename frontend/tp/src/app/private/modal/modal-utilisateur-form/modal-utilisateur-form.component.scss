@@ -1,0 +1,153 @@
+:host ::ng-deep {
+  .p-dialog {
+    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+      width : 20%;
+
+    .p-dialog-header {
+      border-bottom: none;
+      padding: 1.5rem 1.5rem 0.75rem;
+
+      .p-dialog-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #1d1d1f;
+      }
+
+      .p-dialog-header-icon {
+        color: #86868b;
+        &:hover {
+          background-color: #f5f5f7;
+          color: #1d1d1f;
+        }
+      }
+    }
+
+    .p-dialog-content {
+      padding: 0.75rem 1.5rem 1.5rem;
+
+      .p-field {
+        margin-bottom: 1.25rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 400;
+          color: #1d1d1f;
+          font-size: 0.9rem;
+        }
+
+        input, .p-inputtext {
+          width: 100%;
+          padding: 0.75rem;
+          border-radius: 8px;
+          border: 1px solid #d2d2d7;
+          background-color: #ffffff;
+          color: #1d1d1f;
+          font-size: 1rem;
+          transition: all 0.2s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+          }
+
+          &.ng-invalid.ng-dirty {
+            border-color: #ff3b30;
+          }
+        }
+
+        .p-error {
+          display: block;
+          margin-top: 0.5rem;
+          color: #ff3b30;
+          font-size: 0.85rem;
+        }
+      }
+
+      .p-autoComplete {
+        width: 100%;
+
+        .p-autocomplete-input {
+          padding: 0.75rem;
+          border-radius: 8px;
+          border: 1px solid #d2d2d7;
+          background-color: #ffffff;
+          color: #1d1d1f;
+          font-size: 1rem;
+        }
+
+        .p-dropdown-panel {
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .p-dialog-footer {
+      padding: 1rem 1.5rem 1.5rem;
+      border-top: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+
+      .p-button {
+        border-radius: 8px;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: all 0.2s ease;
+
+        &:first-child {
+          background-color: #f5f5f7;
+          color: #1d1d1f;
+          border: none;
+
+          &:hover {
+            background-color: #e8e8ed;
+          }
+        }
+
+        &:last-child {
+          background-color: #0071e3;
+          border: none;
+
+          &:hover {
+            background-color: #0077ed;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .p-fluid {
+    .p-inputtext,
+    .p-button {
+      width: 100%;
+    }
+  }
+
+  @keyframes dialogFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .p-dialog {
+    animation: dialogFadeIn 0.25s ease forwards;
+  }
+}

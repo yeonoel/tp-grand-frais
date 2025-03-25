@@ -1,0 +1,53 @@
+<p-dialog
+          [(visible)]="visible"
+          [modal]="true"
+          header="Ajouter / Modifier une personne"
+          [style]="{ width: '50vw' }"
+          (onHide)="cacherDialogue()">
+  <form [formGroup]="utilisateurForm">
+    <div class="p-field">
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" pInputText formControlName="nom" />
+      <small *ngIf="submitted && nomControl?.errors" class="p-error">Le nom est requis.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="prenom">Prénom</label>
+      <input id="prenom" type="text" pInputText formControlName="prenom" />
+      <small *ngIf="submitted && prenomControl?.errors" class="p-error">Le prénom est requis.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="age">Âge</label>
+      <input id="age" type="number" pInputText formControlName="age" />
+      <small class="p-error" *ngIf="submitted && ageControl?.errors?.['min']">Âge requis et doit être positif.</small>
+    </div>
+    <div class="p-field">
+      <label >Département</label>
+      <p-autoComplete
+      [suggestions]="suggestions"
+      (completeMethod)="suggestionParRechercheDepartement($event)"
+      placeholder="Rechercher un département"
+      formControlName="departement"
+      departement="departement"
+      field="designation"></p-autoComplete>
+      <small *ngIf="submitted && departementControl?.errors" class="p-error">
+        Le département est requis.</small>
+    </div>
+
+    <div class="p-dialog-footer">
+      <p-button
+        [text] ='true'
+         label="Annuler"
+         icon="pi pi-times"
+         class="p-button-text"
+         (click)="cacherDialogue()"></p-button>
+      <p-button
+          [text] ='true'
+          label="Enregistrer"
+          [disabled]="!this.utilisateurForm.valid"
+          icon="pi pi-check"
+          (click)="enregistrerUtilisateur()"></p-button>
+    </div>
+  </form>
+</p-dialog>
