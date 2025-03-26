@@ -20,7 +20,6 @@ public class DepartementControleur {
     }
     @GetMapping("/recuperer-les-departements")
     public List<DepartementDto> recupererLesDepartements() {
-
         return departementFacade.recupererLesDepartements();
     }
 

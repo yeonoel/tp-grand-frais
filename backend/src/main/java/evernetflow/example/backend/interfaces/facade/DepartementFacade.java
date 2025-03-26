@@ -24,6 +24,8 @@ public class DepartementFacade {
 
     }
 
+
+
     /**
     * Recupération de la liste des departements à chaque fois que l'utilisateur
     * fait une recherche dépuis le front dans le champs département
@@ -36,6 +38,14 @@ public class DepartementFacade {
                 .toList();
     }
 
-
+    /**
+     * Récupère toutes les Departements de la base de données.
+     * @return Liste de DepartementDto.
+     */
+    public List<DepartementDto> recupererLesDepartements() {
+        return departementRepository.findAll().stream()
+                .map(DepartementDto::new)
+                .toList();
+    }
 
 }
